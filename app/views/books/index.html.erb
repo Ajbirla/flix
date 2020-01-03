@@ -1,0 +1,15 @@
+<h1><%= pluralize(@books.count,"Book")%></h1>
+<p><%= link_to "Add Movie",new_book_path%></p>
+<ul>
+	<% @books.each do |book|%>
+	<li>
+		<strong><%= link_to book.name,book_path(book.id)%></strong>
+		<p>Edition:<%= book.edition%></p>
+		<p>Price:<%= book.price%></p>
+		<p>Description:<%= book.description%></p>
+
+	</li>
+
+	<%end%>
+</ul>
+

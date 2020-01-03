@@ -1,0 +1,65 @@
+<div class="main">
+					
+<table class="table">
+	<tr>
+		<td>NAME:</td>
+		<td><%= @user.name%></td>
+	</tr>
+	<tr>
+		<td>Email:</td>
+		<td><%= @user.email%></td>
+		
+	</tr>
+	<tr>
+		<td>Member Since:</td>
+		<td><%= @user.created_at.strftime("%B %Y")%></td>
+		
+	</tr>
+	<tr>
+		<td></td>
+		<% if current_user.admin?%>
+		<td><%= link_to("Delete Account",users_path(@user),  class: "btn btn-danger"  , method: :delete, data:{confirm:"Are you sure"})%></td>
+		<%end%>
+	</tr>
+	
+	<%= link_to("Back","/users")%>
+	</table>
+</div>
+
+	
+<div style="width: 500px; float:left; height:300px; background:gray; margin:10px; overflow: scroll">	
+	<h1>Reviews</h1>
+<ol>
+    <% @user.reviews.each do |review| %>
+    <li>
+        <ul>
+            <li>  Movie : <%= link_to Movie.find(review.movie_id).title, movie_path(review.movie_id) %> 
+		<%= user_gravatar @user %>
+	</li> <br>
+            <li>Stars : <%= pluralize(review.stars,'star')%></li> <br>
+            <li>Time: <%= time_ago_in_words(review.updated_at) %> ago </li><br>
+            <li>Comment : <%= review.comment %></li>
+        </ul>
+    </li>
+    <% end %>
+</ol>
+</div>
+
+<div style="width: 500px; float:right; height:300px; background:gray; margin:10px; overflow: scroll">
+<h1>List of favorite movies</h1>
+<ol>
+    <% @user.favorite_movies.each do |favorite| %>
+    <li>
+        <ul>
+            <li>  Movie : <%= link_to Movie.find(favorite.id).title, movie_path(favorite.id) %> 
+		
+	</li> <br>
+                        
+        </ul>
+    </li>
+    <% end %>
+</ol>
+</div>
+
+
+

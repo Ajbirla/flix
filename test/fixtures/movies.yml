@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  rating: MyString
+  total_gross: 9.99
+  description: MyText
+  released_on: 2019-07-08
+
+two:
+  title: MyString
+  rating: MyString
+  total_gross: 9.99
+  description: MyText
+  released_on: 2019-07-08

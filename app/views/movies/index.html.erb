@@ -1,0 +1,51 @@
+<h1><%= pluralize(@movies.count,'Movie')%></h1>
+<%= link_to("Add movie",new_movie_path)%><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+<table class="table table-inverse" >
+	<tr> 
+	<thead >
+		<th>#</th> 
+		<th>Title</th>
+		<th>Rating</th> 
+		<th>Total_gross</th>
+		<th>Description</th> 
+		<th>Release Date</th>
+		<th>Director</th> 
+		<% if current_user && current_user.admin?%>
+		<th>Edit</th>
+		<th>Delete</th>
+		<%end%>
+	</thead>
+</tr>
+	<%count=1 %>
+	<%@movies.each do |movie|%>
+	<tr>
+		<td><%= count%></td>
+		<td><%= link_to(movie.title,movie_path(movie.id))%> </td>
+		<td><%= movie.rating%></td>
+		<td><%= formate_total_gross(movie)%></td>
+		<td><%= truncate(movie.description,length:29,separator:' ')%></td>
+		<td><%= time_ago_in_words(movie.released_on)%> <i><%= movie.released_on.strftime("%B %e, %Y")%></i></td>
+		<td><%= movie.director%></td>
+		<% if current_user && current_user.admin?%>
+		<td><%= link_to("Edit",edit_movie_path(movie.id),  class: "btn btn-primary"  )%></td>
+		<td><%= link_to("Delete",movie_path(movie),  class: "btn btn-danger"  , method: :delete, data:{confirm:"Are you sure"})%></td>
+		<%end%>
+	</tr>
+	<%count+=1%>
+	<%end%>
+</table>
+</div>
+</div>
+</div>
+
+	
+
+		 |
+		
+		
+
+
+

@@ -1,0 +1,39 @@
+<%= form_for @book do |b|%>
+
+<table><tr>
+	<td>
+		<%= b.label:Name%>
+	</td>
+<td>
+		<%= b.text_field:name%>
+	</td>
+	<tr>
+		<td>
+		<%= b.label:Edition%>
+	</td>
+	<td>
+		<%= b.text_field:edition%>
+	</td>
+</tr>
+	<tr>
+		<td>
+		<%= b.label:Price%>
+	</td>
+	<td>
+		<%= b.number_field:price%>
+	</td>
+	<tr>
+		<td>
+		<%= b.label:Description%>
+	</td>
+	<td>
+		<%= b.text_area:description%>
+	</td>
+	<tr>
+		<td></td>
+		<td>
+			<%= b.submit%>
+		</td>
+	</tr>
+</table>
+<%end%>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Flix" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <%= javascript_include_tag "application" %>
+   
+  </head>
+  <body>
+   <%= nav_bar static: :top, brand: "FLIX", responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <%= menu_divider %>
+       
+        <%= menu_item "Users", users_path %>
+        <%= menu_item "Contact", "" %>
+    <% end %>
+             
+
+         <%= menu_group pull: :right do %>
+        <% if current_user %>
+
+            <%= menu_item current_user.name, user_path(current_user.id)%>
+            <%= menu_item "Log Out", sessions_path, method: :delete %>
+        <% else %>
+            <%= menu_item "Sign In", new_sessions_path %>
+            <%= menu_item "Sign Up", new_user_path %>
+           
+        <% end %>
+    <% end %>
+    <% end %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= bootstrap_flash %>
+          <%= yield %>
+       </div>
+         
+    </div> <!-- /container -->
+  
+<%= render 'layouts/footer'%>
+
+  </body>
+</html>

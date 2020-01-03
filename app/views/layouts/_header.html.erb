@@ -1,0 +1,28 @@
+
+ <nav class="navbar navbar-inverse navbar-static-top" style="background-color: #789485" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'FLIX',root_path, class: "navbar-brand"%>
+    </div>
+    <button class = "navbar-toggle" data-toggle = "collapse" data-target = "#navHeaderCollapse">
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+            </button>
+    <ul class="nav navbar-nav" style="color: black">
+      <li class="active"><%= link_to'Home',root_path%></li>
+      <li><%= link_to'Users',users_path%></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <% if session[:user_id]%>
+         <li> <%= User.find(session[:user_id]).name%></li>
+    <%else%>
+      <li><%= link_to'Sign Up',users_path,class: "glyphicon glyphicon-user"%></li>
+      <<li><%= link_to'Sign In',new_sessions_path,class: "glyphicon glyphicon-user"%></li>
+      <%end%>
+    </ul>
+
+  </div>
+</nav> 

@@ -1,0 +1,9 @@
+<h1>Book</h1>
+<ul>
+	<li><%= @book.name%></li>
+</ul>
+<nav>
+	<%= link_to("List All","/books")%> |
+	<%= link_to("Edit",edit_book_path(@book))%> |
+	<%= link_to("Delete",book_path(@book), method: :delete, data:{confirm:"Are you sure"})%>
+</nav>

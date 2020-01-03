@@ -1,0 +1,37 @@
+<h1><%= pluralize(@users.count,'user')%></h1>
+<%= link_to("Add user",new_user_path)%><br>
+
+<table class="table" >
+	<tr> 
+	<thead class="thead-dark">
+		<th>#</th> 
+		<th>Name</th>
+		<th>Email</th> 
+		<th></th>
+		<th>Actions</th>
+		<th></th>
+	</thead>
+</tr>
+	<%count=1 %>
+	<%@users.each do |user|%>
+	<tr>
+		<td><%= count%></td>
+		<td><%= link_to(user.name,user_path(user.id))%> </td>
+		<td><%= user.email%></td>
+		<td>	<% if current_user && current_user.sadmin? %>
+			<% unless user.admin? %>
+			<%= link_to("Make admin",create_admin_path(user),  class: "btn btn-primary"  )%>
+			<%else%>
+				<%= link_to("Remove admin",remove_admin_path(user),  class: "btn btn-primary")%>
+			<%end%>
+			<%end%>
+		</td>
+		
+		<% if current_user && current_user.admin? %>
+		<td><%= link_to("Edit Account",edit_user_path(user),  class: "btn btn-primary"  )%></td>
+		<td><%= link_to("Delete Account",users_path(user),  class: "btn btn-danger"  , method: :delete, data:{confirm:"Are you sure"})%></td>
+		<%end%>
+	</tr>
+	<%count+=1%>
+	<%end%>
+</table>

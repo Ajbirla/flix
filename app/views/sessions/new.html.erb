@@ -1,0 +1,27 @@
+
+<center>
+
+<table>
+	<%= form_tag sessions_path do %>
+	<tr>
+		<td>
+			<%= label_tag :email %></td>
+			<td>
+			<%= email_field_tag :email, nil%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= label_tag :password,"Password" %></td>
+			<td>
+			<%= password_field_tag :password, nil%>
+		</td>
+	</tr>
+	
+	<tr><td></td><td> <%= link_to "Cancel", users_path, class: 'btn btn-default' %>
+		<%= submit_tag "Login", class: "btn btn-primary"%>
+			 </td> </tr>
+<%end%>
+</table>
+	 <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+</center>
