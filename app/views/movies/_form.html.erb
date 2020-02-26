@@ -5,78 +5,81 @@
 <%= form_for @movie do |f| %>
 <center>
 
-<table>
-	<tr>
-		<td>
-			<%= f.label:Title %></td>
-			<td><%= f.text_field:title, :autofocus=>true %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Rating %></td>
-			<td>
-			<%= f.select :rating, Movie::RATINGS, prompt: "Pick one" %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Total_gross %></td>
-			<td>
-			<%= f.number_field:total_gross, :required=>true%>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Description %></td>
-			<td>
-			<%= f.text_area:description %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Released_on %></td>
-			<td>
-			<%= f.date_field:released_on %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Cast %></td>
-			<td>
-			<%= f.text_field:cast %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Director %></td>
-			<td>
-			<%= f.text_field:director %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label:Duration %></td>
-			<td>
-			<%= f.text_field:duration %>
-		</td>
-	</tr>
-	<tr>
-            <td><%= f.label:genres %></td>
-            <td>
-                <%= f.label :genres %>
-                <span style="display: block;" ><%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %></span>
-            </td>
-        </tr>
-	<tr>
-		<td>
-			<%= f.label:Image %></td>
-			<td>
-			<%= f.text_field:image_file_name %>
-		</td>
-	</tr>
-	
-	<tr><td></td><td> <%= link_to "Cancel", movies_path, class: 'btn btn-primary' %><%= f.submit%> </td> </tr>
-</table>
+  <table>
+    <tr>
+      <td>
+        <%= f.label:Title %></td>
+        <td><%= f.text_field:title, :autofocus=>true %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Rating %></td>
+        <td>
+        <%= f.select :rating, Movie::RATINGS, prompt: "Pick one" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Total_gross %></td>
+        <td>
+        <%= f.number_field:total_gross, :required=>true%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Description %></td>
+        <td>
+        <%= f.text_area:description %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Released_on %></td>
+        <td>
+        <%= f.date_field:released_on %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Cast %></td>
+        <td>
+        <%= f.text_field:cast %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:Director %></td>
+        <td>
+        <%= f.text_field:director %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :Duration %></td>
+        <td>
+        <%= f.text_field :duration %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label:genres %>
+      </td>
+      <td>
+          <%= f.label :genres %>
+          <span style="display: block;" ><%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :Image %>
+      </td>
+      <td>
+        <%= f.file_field :uploads, multiple: true %>
+      </td>
+    </tr>
+
+    <tr><td></td><td> <%= link_to "Cancel", movies_path, class: 'btn btn-primary' %><%= f.submit%> </td> </tr>
+  </table>
 </center>
 <%end%>
